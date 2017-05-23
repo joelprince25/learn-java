@@ -44,13 +44,13 @@ public class StreamsExample {
 			InputStream is = new FileInputStream(new File(System.getProperty("user.dir")+"/data/persons.csv"));
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		    people_file = br.lines()
-						.skip(1)
-						.map(mapToPerson)
-						.collect(Collectors.toList());
+		    		.skip(1)
+		    		.map(mapToPerson)
+		    		.collect(Collectors.toList());
 			
 			people_file_stream = br.lines()
-								 .skip(1)
-								 .map(mapToPerson);
+					.skip(1)
+					.map(mapToPerson);
 			
 			//Can't do this cause it says the stream has been closed when trying to use supplier later on.
 			//people_file_supplier = () -> br.lines()
