@@ -112,6 +112,14 @@ public class StreamsExample {
 		people_file_supplier_a_b.get().forEach(p -> p.zeroAge());	
 		people_file_supplier_a_b.get().forEach(p -> System.out.println(p.getAge()));//Prints only one age
 		System.out.println("Number of elements in stream = " + people_file_supplier_a_b.get().count()); //1
+
+		//If we save an element of a supplier separately and update the supplier, the saved element gets updated as well
+		System.out.println("Output 7");
+		Person x = people_file_supplier.get().filter(p -> Objects.equals(p.getName(), "R")).findFirst().orElse(null);
+		System.out.println(x.getAge());
+		people_file_supplier.get().filter(p -> p.getName().startsWith("R")).forEach(p -> p.zeroAge());
+		people_file_supplier.get().filter(p -> p.getName().startsWith("R")).forEach(p -> System.out.println(p.getAge()));
+		System.out.println(x.getAge());
 	}
 
 }
